@@ -1,6 +1,7 @@
 package com.example.ToDoApplication.services;
 
 import com.example.ToDoApplication.models.Task;
+import com.example.ToDoApplication.models.TaskResponse;
 import com.example.ToDoApplication.repositories.TaskRepository;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -16,10 +20,22 @@ import java.util.List;
 public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
-
+/*
     public List<Task> index() {
 
         return taskRepository.findAll();
+    }*/
+
+    // Map<Date, List<Task>>
+    public List<TaskResponse> index() {
+        List<Task> tasks = taskRepository.findAll();
+        Map<Date, List<Task>> tasksByDate = tasks.stream().collect(Collectors.groupingBy(Task::getDate));
+        return tasksByDate.entrySet().stream().map(entry -> {
+            TaskResponse taskDate = new TaskResponse();
+            taskDate.setDate(entry.getKey());
+            taskDate.setTasks(entry.getValue().stream().map(Task::toInfoTask).collect(Collectors.toList()));
+            return taskDate;
+        }).collect(Collectors.toList());
     }
     public Task create (Task task) {
         return taskRepository.save(task);

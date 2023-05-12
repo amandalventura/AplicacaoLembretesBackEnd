@@ -1,6 +1,7 @@
 package com.example.ToDoApplication.controllers;
 
 import com.example.ToDoApplication.models.Task;
+import com.example.ToDoApplication.models.TaskResponse;
 import com.example.ToDoApplication.services.TaskService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/task")
@@ -25,10 +28,17 @@ public class TaskController {
        log.info("Criando nova tarefa: [{}]", task);
         return taskService.create(task);
     }
-
+/*
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<Task> index() {
+        log.info("Listando todas as tarefas.");
+        return taskService.index();
+    }
+*/
+    @GetMapping("")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TaskResponse> index() {
         log.info("Listando todas as tarefas.");
         return taskService.index();
     }

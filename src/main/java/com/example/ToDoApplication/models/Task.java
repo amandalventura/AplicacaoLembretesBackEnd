@@ -26,4 +26,13 @@ public class Task {
     @Column(nullable = false)
     private Boolean concluded;
 
+    public InfoTask toInfoTask(){
+        InfoTask infoTask = new InfoTask();
+        infoTask.setId(this.id);
+        infoTask.setDescription(this.description);
+        infoTask.setConcluded(this.concluded);
+
+        return infoTask;
+    }
+
 }
