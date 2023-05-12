@@ -28,14 +28,14 @@ public class TaskController {
        log.info("Criando nova tarefa: [{}]", task);
         return taskService.create(task);
     }
-/*
-    @GetMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public List<Task> index() {
+    public List<Task> index2() {
         log.info("Listando todas as tarefas.");
-        return taskService.index();
+        return taskService.index2();
     }
-*/  @CrossOrigin(origins = "*", allowedHeaders = "*")
+  @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<TaskResponse> index() {

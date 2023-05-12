@@ -18,11 +18,11 @@ import java.util.stream.Collectors;
 public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
-/*
-    public List<Task> index() {
+
+    public List<Task> index2() {
 
         return taskRepository.findAll();
-    }*/
+    }
 
     // Map<Date, List<Task>>
     public List<TaskResponse> index() {
