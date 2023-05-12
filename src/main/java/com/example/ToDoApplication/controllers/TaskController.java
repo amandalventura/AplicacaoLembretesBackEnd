@@ -21,7 +21,7 @@ import java.util.Map;
 public class TaskController {
     @Autowired
     TaskService taskService;
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Task create(@RequestBody Task task) {
@@ -35,14 +35,14 @@ public class TaskController {
         log.info("Listando todas as tarefas.");
         return taskService.index();
     }
-*/
+*/  @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("")
     @ResponseStatus(HttpStatus.OK)
     public List<TaskResponse> index() {
         log.info("Listando todas as tarefas.");
         return taskService.index();
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Task> show(@PathVariable (value = "id") Long id) {
@@ -50,15 +50,16 @@ public class TaskController {
         log.info("Exibindo tarefa pelo id [{}].",id);
         return taskService.show(id);
     }
-
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Task> show(@PathVariable (value = "id") Long id, @RequestBody Task task) {
+    public ResponseEntity<Task> update(@PathVariable (value = "id") Long id, @RequestBody Task task) {
 
         log.info("Atualizando tarefa pelo id [{}], com as novas informações [{}].", id, task);
         return taskService.update(id, task);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Object> delete(@PathVariable (value = "id") Long id) {

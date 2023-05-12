@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,12 +28,14 @@ public class TaskService {
     public List<TaskResponse> index() {
         List<Task> tasks = taskRepository.findAll();
         Map<Date, List<Task>> tasksByDate = tasks.stream().collect(Collectors.groupingBy(Task::getDate));
-        return tasksByDate.entrySet().stream().map(entry -> {
+        List<TaskResponse> taskDates = tasksByDate.entrySet().stream().map(entry -> {
             TaskResponse taskDate = new TaskResponse();
             taskDate.setDate(entry.getKey());
             taskDate.setTasks(entry.getValue().stream().map(Task::toInfoTask).collect(Collectors.toList()));
             return taskDate;
         }).collect(Collectors.toList());
+        Collections.sort(taskDates, Comparator.comparing(TaskResponse::getDate));
+        return taskDates;
     }
     public Task create (Task task) {
         return taskRepository.save(task);
