@@ -1,4 +1,32 @@
 # task-list-api
+Este repositório contém o código-fonte para uma API de back-end desenvolvida em Java usando o framework Spring Boot. A API é responsável por fornecer serviços para gerenciar uma lista de tarefas, permitindo a criação, atualização, exclusão e recuperação de tarefas.
+
+## Principais Recursos
+- Operações CRUD (Criar, Ler, Atualizar, Excluir) para tarefas: A API oferece endpoints para criar novas tarefas, recuperar informações das tarefas existentes, atualizar tarefas existentes e excluir tarefas.
+- Gerenciamento do status da tarefa: Cada tarefa pode ter um status associado, como "pendente", "em andamento" ou "concluída". A API permite atualizar o status de uma tarefa.
+- Autenticação e Autorização: A API implementa um sistema de autenticação e autorização para garantir que apenas usuários autenticados possam criar, atualizar ou excluir tarefas. O acesso aos endpoints é controlado por meio de tokens de autenticação.
+- Validação de Dados: A API realiza a validação dos dados de entrada, garantindo que os campos obrigatórios estejam presentes e que os dados estejam no formato apropriado.
+## Tecnologias Utilizadas
+Java: A linguagem de programação utilizada para desenvolver a API.
+Spring Boot: O framework Java utilizado para facilitar o desenvolvimento de aplicações web.
+Spring Data JPA: A biblioteca do Spring utilizada para interagir com o banco de dados, fornecendo uma camada de abstração para operações CRUD.
+Banco de Dados Relacional (por exemplo, Banco de Dados H2 em Memória): Armazena as informações das tarefas e dos usuários do aplicativo.
+API RESTful: A API segue os princípios e padrões REST para exposição de recursos e interações por meio de endpoints HTTP.
+JSON: O formato de dados utilizado para comunicação entre a API e os clientes.
+## Uso
+1. Clone o repositório: git clone https://github.com/your-username/API-ToDoApplication.git
+2. Configure a conexão do banco de dados no arquivo application.properties.
+3. Construa e execute o aplicativo usando o Maven ou a sua IDE preferida.
+4. Acesse os endpoints da API utilizando uma ferramenta como cURL ou um cliente REST.
+## Contribuições
+Contribuições são bem-vindas! Por favor, faça um fork do repositório e envie um pull request com as suas alterações propostas.
+
+## Licença
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+
+
+# task-list-api
 
 This repository contains the source code for a backend API developed in Java using the Spring Boot framework. The API is responsible for providing services to manage a task list, allowing the creation, updating, deletion, and retrieval of tasks.
 
